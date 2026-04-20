@@ -1,0 +1,4 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+13:57:46	88/88	---M--	200	added ('OK')	text/plain	etag:%2258-6424f4f0-ab7c68b3694fd6cd;;;%22	https://hpbeautys.com/robots.txt		(from )
+13:57:49	201006/201006	---MCZ	200	added ('OK')	text/html	date:Sun,%2019%20Apr%202026%2008:27:50%20GMT	https://hpbeautys.com/	D:/realityfaces/Orange%20ladies/hpbeautys.com/index.html	(from )
+13:57:49	609/609	---M-Z	200	added ('OK')	application/json	etag:%22261-645a88a2-5832d6b6b8dbbd0c;gz%22	https://hpbeautys.com/wp-content/themes/kitring/assets/dist/json/manifest.json	D:/realityfaces/Orange%20ladies/hpbeautys.com/wp-content/themes/kitring/assets/dist/json/manifest.json	(from https://hpbeautys.com/)

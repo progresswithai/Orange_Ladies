@@ -1,0 +1,23 @@
+{
+	"display": "standalone",
+	"orientation": "portrait",
+	"short_name": "ORANGE LADIES",
+	"name": "ORANGE LADIES Beauty",
+	"start_url": "/?utm_source=homescreen",
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"icons": [
+		{
+		"src": "/logo.png",
+		"type": "image/png",
+		"sizes": "192x192"
+		},
+		{
+		"src": "/logo.png",
+		"type": "image/png",
+		"sizes": "512x512"
+		}
+	]
+}
+
+
