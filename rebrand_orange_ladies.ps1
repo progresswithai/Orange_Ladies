@@ -3,8 +3,8 @@ $oldBrandSpace = "Hiral Patel"
 $oldBrandUpper = "HIRAL PATEL"
 $newBrand = "ORANGE LADIES Beauty"
 
-# Target files in the current root directory
-$htmlFiles = Get-ChildItem -Path "." -Filter "*.html"
+# Target files in the current root directory and subdirectories
+$htmlFiles = Get-ChildItem -Path "." -Filter "*.html" -Recurse
 $jsonFiles = Get-ChildItem -Path "." -Filter "manifest.json" -Recurse
 $cssFiles = Get-ChildItem -Path "." -Filter "*.css" -Recurse
 $files = @($htmlFiles) + @($jsonFiles) + @($cssFiles)
@@ -18,10 +18,12 @@ foreach ($file in $files) {
     $content = $content.Replace($oldBrandSpace, $newBrand)
     $content = $content.Replace($oldBrandUpper, $newBrand)
     
-    # Fix Styling: Point missing assets back to live domain
-    # Replace root-relative /wp-content/ and /wp-includes/
-    # We use a regex to ensure we don't match things that are already absolute
-    # But for simplicity in PS, we'll just do common patterns
+    # Localize internal links (replace domain with /)
+    # We do this for anything starting with the domain
+    $content = $content.Replace('https://hpbeautys.com/', '/')
+    
+    # Fix Assets: Re-point missing assets back to live domain
+    # Since we replaced the domain with / above, we need to specifically point these back
     $content = $content.Replace('"/wp-content/', '"https://hpbeautys.com/wp-content/')
     $content = $content.Replace("'/wp-content/", "'https://hpbeautys.com/wp-content/")
     $content = $content.Replace('url(/wp-content/', 'url(https://hpbeautys.com/wp-content/')
@@ -33,11 +35,10 @@ foreach ($file in $files) {
     $content = $content.Replace('url(/wp-includes/', 'url(https://hpbeautys.com/wp-includes/')
     
     # Specifically replace the logo image with the local one
-    # Note: We do this AFTER the URL swaps to ensure it stays local
     $oldLogo = "https://hpbeautys.com/wp-content/uploads/2023/03/Hiral-Patel-41.png"
     $content = $content.Replace($oldLogo, "/logo.png")
     
     Set-Content -Path $file.FullName -Value $content
 }
 
-echo "Rebranding and deep styling fix complete."
+echo "Rebranding and internal linking fix complete."
